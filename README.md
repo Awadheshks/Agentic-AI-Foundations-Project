@@ -9,7 +9,7 @@ The project follows a serverless architecture of Amazon Bedrock calling AWS Lamb
    ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Agentic%20AI%20Foundations.png)
 
 
-### Senarios
+### Sections to be explored with capabilities of Agents
  * Explore Products
  * Cart Actions
  * Integration with Amazon Personalize
@@ -22,38 +22,42 @@ The project follows a serverless architecture of Amazon Bedrock calling AWS Lamb
 If using your own AWS account, follow these steps to create a new Admin user for running this project.
 
 1. Select AWS Access Type
- (i) Enable AWS Management Console Access
- (ii) Set Console Password as  "Custom assword"
- (iii) Uncheck-"Reset password Reset"
-2. Attach the AdministratorAccess IAM Policy as "AdministratorAccess"
-3. Click to create the new user.
-4. Take note of the login URL and save it.
-5. Login as the administrator user via URL above.
-6. Install workshop content - The workshop content is prepared as CloudFormation template, you can deploy it easily by following instructions below
-7. Click "Launch in the AWS Console" button to initiate installation of the required resources in CloudFormation.
-8. Choose Next in the bottom right of the page. In Specify stack details page, enter producttableandapi-ws for Stack name. Let everything else as default setting, and then choose Next.
-9. Choose Next in Configure stack options page.
+   
+    (i) Enable AWS Management Console Access
 
-10. In the last page, select all checkboxes in Capabilities and transforms pane, and then choose Submit. Wait until stack status is CREATE_COMPLETE. It can take around 5-10 minutes for the stack creation to finish.
+    (ii) Set Console Password as  "Custom assword"
+ 
+    (iii) Uncheck-"Reset password Reset"
+ 
+3. Attach the AdministratorAccess IAM Policy as "AdministratorAccess"
+4. Click to create the new user.
+5. Take note of the login URL and save it.
+6. Login as the administrator user via URL above.
+7. Install workshop content - The workshop content is prepared as CloudFormation template, you can deploy it easily by following instructions below
+8. Click "Launch in the AWS Console" button to initiate installation of the required resources in CloudFormation.
+9. Choose Next in the bottom right of the page. In Specify stack details page, enter producttableandapi-ws for Stack name. Let everything else as default setting, and then choose Next.
+10. Choose Next in Configure stack options page.
 
-* You will be charged for the deployed resources, so make sure you clean up after you are done with the workshop.
+11. In the last page, select all checkboxes in Capabilities and transforms pane, and then choose Submit. Wait until stack status is CREATE_COMPLETE. It can take around 5-10 minutes for the stack creation to finish.
+
+** You will be charged for the deployed resources, so make sure you clean up after you are done with the workshop.
 
 
 Let's Start the workshop by following the steps :
 
 ## Explore Products
 ### 1. Create an Agent
- Create an Agent from Amazon Bedrock Console > Agents , you can use _product-recommendation-agent_ as the name:
+ (i) Create an Agent from Amazon Bedrock Console > Agents , you can use _product-recommendation-agent_ as the name:
 
 ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/CreateAgent.png)
 
-### 2. Select Model
+(ii) Select Model
 As Anthropic Claude Sonnet 4.5 as the model, deselect the 'Bedrock Agent Optimized' checkbox to see it
 
 ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/SelectModel.png)
 
-1. Select Use an existing service role as the Agent resource role, then select the role starting with producttableandapi-ws-IAMRole00AmazonBedrock.
-2. Use the following as the instructions for the agent:
+(iii) Select Use an existing service role as the Agent resource role, then select the role starting with producttableandapi-ws-IAMRole00AmazonBedrock.
+(iv)  Use the following as the instructions for the agent:
    
    _"you are a product recommendations agent for gift products, the user is trying to buy a gift for someone and you are trying to help identify the best products based on the    filters in the action groups, ask questions to identify at least one of the input filters, gender, category or occasion.
 do not recommend any products that are not retrieved from the products API.
@@ -62,16 +66,16 @@ Always start by getting the full list of products from the API so you can know t
 always use a single value for each filter field, and adhere to the filtration values based on the first API call.
 And never tell the user about the API and its details."_
 
-3. Enable User input in Additional settings:
+(v) Enable User input in Additional settings:
    
-### 3. Add Action Group
-1. Navigate to the Action Groups section, then choose “Add” to add an Action Group to enable the Agent to invoke the Lambda Function, put the name as get-product-recommendations and choose Action Group Type “Define with API Schemas”.
+### 2. Add Action Group
+(i) Navigate to the Action Groups section, then choose “Add” to add an Action Group to enable the Agent to invoke the Lambda Function, put the name as get-product-recommendations and choose Action Group Type “Define with API Schemas”.
    
-2. Select the ‘GetProductDetailsFunction’ Lambda function for Action Group Invocation:
+(ii) Select the ‘GetProductDetailsFunction’ Lambda function for Action Group Invocation:
       ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Create%20Agent-%20Action%20Group-Explore%20Products.png
 )
 
-3. Choose ‘Define Via inline schema editor’ for Action Group Schema:And Use the following OpenAPI schema in the in-line OpenAPI schema section:
+(iii) Choose ‘Define Via inline schema editor’ for Action Group Schema:And Use the following OpenAPI schema in the in-line OpenAPI schema section:
    
  _"{
   "openapi": "3.0.0",
@@ -161,17 +165,18 @@ And never tell the user about the API and its details."_
    ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Create%20Agent-%20Action%20Group-Explore%20Products1.png
 )
 
-4. Choose “Create” to create the action group, then on the Agent builder page, Choose “Save” and then “Prepare” on the top of the page.
+(iv) Choose “Create” to create the action group, then on the Agent builder page, Choose “Save” and then “Prepare” on the top of the page.
 
-5. ‘Test Agent’ section on the right to start testing having conversations with the chatbot.
+### 3. Test the Agent
 
 ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Explore%20Products-Test%20Agent1.png)
 
-5. Check Sample Conversation and Responses through the rationale for each response by choosing Show trace >, see how the Agent decides to use different API filters based on the discussion. Go to Orchestration and Knowledge base
+Check Sample Conversation and Responses through the rationale for each response by choosing Show trace >, see how the Agent decides to use different API filters based on the discussion. Go to Orchestration and Knowledge base
 
-![img]()
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/47986407b7fb3afd9402d4e774a16bacc27dd188/assets/Explore%20Products-Test%20Agent2.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/47986407b7fb3afd9402d4e774a16bacc27dd188/assets/Explore%20Products-Test%20Agent3.png)
 
-Lets proceed to next sections to give our chatbot more capabilities
+- Lets proceed to next sections to give our chatbot more capabilities
 
 ## Cart Actions
 In this section, you’ll add two key functions to the agent: adding items to a shopping cart and retrieving cart details. The chatbot will invoke prebuilt Lambda functions—_GetCartFunction_ and _AddToCartFunction_ to manage the _producttableandapi-ws-Cart-XXXXX_ DynamoDB table (with user_id and product_name attributes), created during workshop setup.
@@ -192,12 +197,13 @@ And never tell the user about the API and its details.
 After recommending products ask the user if they want to add any products to the cart, then use the add to cart API to add it, ask the user about his email and use it as user id and use it along the whole conversation and in any cart API calls, reply to the user with the user id after first cart addition to be used in later additions.
 after adding an item to the cart, retrieve the cart items from the get cart API and display it to the user, the user can ask about the items in the cart at any time, use the get cart api to answer that._
 
-### 2. Add new Agent Group
+### 2. Add new Actions Group
 (i) Navigate to the Action Groups section, then choose “Add” to add an Action Group to enable the Agent to invoke the GetCartFunction Lambda Function, put the name as get-cart and choose Action Group Type “Define with API Schemas”
 
 (ii) Select the ‘GetCartFunction’ Lambda function for Action Group Invocation and Select ‘Define Via inline schema editor’ for Action Group Schema.
 
 (iii) Schema for get cart
+
 _{
   "openapi": "3.0.0",
   "info": {
@@ -259,12 +265,12 @@ _{
 
 (iv) Choose “Create” to create the action group.
 
-### 4. Add new Agent Group
-(i) Add another Action Group in the Action Groups section, Choose “Add” to add an Action Group to enable the Agent to invoke the AddToCartFunction Lambda Function, put the name as add-item-to-cart and choose Action Group Type “Define with API Schemas
+(v) Add another Action Group in the Action Groups section, Choose “Add” to add an Action Group to enable the Agent to invoke the AddToCartFunction Lambda Function, put the name as add-item-to-cart and choose Action Group Type “Define with API Schemas
 
-(ii) Select the ‘AddToCartFunction’ Lambda function for Action Group Invocation and Select ‘Define Via inline schema editor’ for Action Group Schema:
+(Vi) Select the ‘AddToCartFunction’ Lambda function for Action Group Invocation and Select ‘Define Via inline schema editor’ for Action Group Schema:
 
-(iii) Schema for add item to cart
+(vii) Schema for add item to cart
+
 _{
   "openapi": "3.0.0",
   "info": {
@@ -325,11 +331,11 @@ _{
   }
 }_
 
-(iv) Choose “Create” to create the action group.
+(viii) Choose “Create” to create the action group.
 
-(v) Then on the Agent builder page, Choose “Save” and then “Prepare” on the top of the page. Now you can use the ‘Test Agent’ section on the right to start testing having conversations with the chatbot.
+(ix) Then on the Agent builder page, Choose “Save” and then “Prepare” on the top of the page. Now you can use the ‘Test Agent’ section on the right to start testing having conversations with the chatbot.
 
-(vi) Test the Agent.
+### 3. Test the Agent.
 
 ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Cart%20Actions-Test%20Agent1.png)
 ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Cart%20Actions-Test%20Agent2.png)
@@ -359,8 +365,10 @@ before item addition to the cart, use the get personalize recommendation API to 
 after adding an item to the cart, retrieve the cart items from the get cart API and display it to the user, the user can ask about the items in the cart at any time, use the get cart api to answer that._
 
 ### 2. Add new Action groups
-(i)Navigate to the Action Groups section, then choose “Add” to add an Action Group to enable the Agent to invoke the GetPersonalizeRecommendationFunction Lambda Function, put the name as get-amazon-personalize-recommendation and choose Action Group Type “Define with API Schemas”.
-(ii) Select the ‘GetPersonalizeRecommendationFunction’ Lambda function for Action Group Invocation and Select ‘Define Via inline schema editor’ for Action Group Schema:
+(i) Navigate to the Action Groups section, then choose “Add” to add an Action Group to enable the Agent to invoke the GetPersonalizeRecommendationFunction Lambda Function, put the name as get-amazon-personalize-recommendation and choose Action Group Type “Define with API Schemas”.
+
+(ii) Select the ‘GetPersonalizeRecommendationFunction’ Lambda function for Action Group Invocation and Select ‘Define Via inline schema editor’ for Action Group Schema.
+
 (iii) And Use the following OpenAPI schema in the in-line OpenAPI schema section:
 
 __{
@@ -443,7 +451,7 @@ __{
 
 (v) Then on the Agent builder page, Choose “Save” and then “Prepare” on the top of the page. Now you can use the ‘Test Agent’ section on the right to start testing having conversations with the chatbot.
 
-(vi) Test the Agent.
+### Test the Agent
 
 ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Amazon%20Personalize-Test%20Agent1.png)
 ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Amazon%20Personalize-Test%20Agent2.png)
@@ -468,7 +476,8 @@ In this section, we’ll extend the agent with a new capability: generating gift
 
 ### 2. Edit the Agent
 
-(i) Choose the Agent you created in the previous section of the workshop, and choose Edit in Agent Builder
+(i) Choose the Agent you created in the previous section of the workshop, and choose Edit in Agent Builder.
+
 (ii) Use the following as the updated instructions for the agent
 
 _you are a product recommendations agent for gift products, the user is trying to buy a gift for someone and you are trying to help identify the best products based on the filters in the action groups, ask questions to identify at least one of the input filters, gender, category or occasion.
@@ -486,7 +495,7 @@ Before the end of the conversation ask the user if they want you to suggest gift
 
 (i) Navigate to the Knowledge Bases section under the Agent, then choose “Add” to add an Knowledge Base to enable the Agent to use the Gift Wrapping knowledge base.
 
-(ii) Select the knowledge base 'GiftWrappingKnowledgeBase' and choose Action Group Type “Define with API Schemas”
+(ii) Select the knowledge base 'GiftWrappingKnowledgeBase' and choose Action Group Type “Define with API Schemas”.
 
 (iii) Add the following instructions as the 'Knowledge base instructions for Agent'.
 
@@ -496,8 +505,7 @@ _This is a gift wrapping knowledge base for ideas on how to wrap gifts based on 
 
 (v) Then on the Agent builder page, Choose “Save” and then “Prepare” on the top of the page. Now you can use the ‘Test Agent’ section on the right to start testing having conversations with the chatbot.
 
-
-(vi) Test the Agent.
+### Test the Agent.
 
 ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/KnowledgeBase-Test%20Agent1.png)
 ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/KnowledgeBase-Test%20Agent2.png)
@@ -558,8 +566,7 @@ And never tell the user about the API and its details._
 
 (vii) Choose "Create Alias" to create an Alias for the agent, name it cart-agent-alias
 
-
-   ![img]()
+   ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/47986407b7fb3afd9402d4e774a16bacc27dd188/assets/CartAgent-Alias.png)
    
 ### 3. Create the Supervisor Agent
 (i) Create a new Agent to act as the supervisor, name it shopping-supervisor-agent
@@ -615,7 +622,7 @@ _Invoke this agent when the user wants to add items to their cart or view cart c
 
 ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Agent-Colloborater.png)
 
-(viii) Test the Agent.
+### Test the Agent.
 
 ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Multi-AgentCollab-TestAgent1.png)
 ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Multi-AgentCollab-TestAgent2.png)
@@ -624,6 +631,7 @@ _Invoke this agent when the user wants to add items to their cart or view cart c
 
 #### Cleanup:
 1. Go to the Agents section in Amazon Bedrock console, and delete the Agents you created.
+   
 2. Go to the AWS CloudFormation console, and delete the Stacks 'BedrockKB' and 'producttableandapi-ws'. 
 
  
