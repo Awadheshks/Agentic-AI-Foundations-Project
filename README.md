@@ -6,7 +6,7 @@ This project will demonstrate how to build an e‑commerce chatbot using Amazon 
 ### Architecture
 The project follows a serverless architecture of Amazon Bedrock calling AWS Lambda functions which do some actions on a set of Amazon DynamoDB tables, and utilizing Knowledge Bases for Amazon Bedrock to incorporate data from files in Amazon Simple Storage Service (Amazon S3).
 
-   ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Agentic%20AI%20Foundations.png)
+   ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Agentic%20AI%20Foundations.png)
 
 
 ### Sections to be explored with capabilities of Agents
@@ -49,12 +49,12 @@ Let's Start the workshop by following the steps :
 ### 1. Create an Agent
  (i) Create an Agent from Amazon Bedrock Console > Agents , you can use _product-recommendation-agent_ as the name:
 
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/CreateAgent.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/CreateAgent.png)
 
 (ii) Select Model
 As Anthropic Claude Sonnet 4.5 as the model, deselect the 'Bedrock Agent Optimized' checkbox to see it
 
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/SelectModel.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/SelectModel.png)
 
 (iii) Select Use an existing service role as the Agent resource role, then select the role starting with producttableandapi-ws-IAMRole00AmazonBedrock.
 (iv)  Use the following as the instructions for the agent:
@@ -72,7 +72,7 @@ And never tell the user about the API and its details."_
 (i) Navigate to the Action Groups section, then choose “Add” to add an Action Group to enable the Agent to invoke the Lambda Function, put the name as get-product-recommendations and choose Action Group Type “Define with API Schemas”.
    
 (ii) Select the ‘GetProductDetailsFunction’ Lambda function for Action Group Invocation:
-      ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Create%20Agent-%20Action%20Group-Explore%20Products.png
+      ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Create%20Agent-%20Action%20Group-Explore%20Products.png
 )
 
 (iii) Choose ‘Define Via inline schema editor’ for Action Group Schema:And Use the following OpenAPI schema in the in-line OpenAPI schema section:
@@ -162,14 +162,14 @@ And never tell the user about the API and its details."_
 
 }"
 
-   ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Create%20Agent-%20Action%20Group-Explore%20Products1.png
+   ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Create%20Agent-%20Action%20Group-Explore%20Products1.png
 )
 
 (iv) Choose “Create” to create the action group, then on the Agent builder page, Choose “Save” and then “Prepare” on the top of the page.
 
 ### 3. Test the Agent
 
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Explore%20Products-Test%20Agent1.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Explore%20Products-Test%20Agent1.png)
 
 Check Sample Conversation and Responses through the rationale for each response by choosing Show trace >, see how the Agent decides to use different API filters based on the discussion. Go to Orchestration and Knowledge base
 
@@ -184,7 +184,7 @@ In this section, you’ll add two key functions to the agent: adding items to a 
 ### 1. Edit the Agent
 (i) Choose the Agent you created in the previous section of the workshop, and choose Edit in Agent Builder
 
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Product-Recommendation-Agent.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Product-Recommendation-Agent.png)
 
 (ii) Use the following as the updated instructions for the agent:
 
@@ -337,9 +337,9 @@ _{
 
 ### 3. Test the Agent.
 
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Cart%20Actions-Test%20Agent1.png)
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Cart%20Actions-Test%20Agent2.png)
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Cart%20Actions-Test%20Agent3.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Cart%20Actions-Test%20Agent1.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Cart%20Actions-Test%20Agent2.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Cart%20Actions-Test%20Agent3.png)
 
 - Now lets proceed to next section to give our chatbot even more capabilities
 
@@ -350,7 +350,7 @@ In this section, we’ll add a simulated integration with Amazon Personalize, a 
 
 (i) Choose the Agent you created in the previous section of the workshop, and choose Edit in Agent Builder
 
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Product-Recommendation-Agent.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Product-Recommendation-Agent.png)
 
 (ii) Use the following as the updated instructions for the agent.
 
@@ -453,9 +453,9 @@ __{
 
 ### Test the Agent
 
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Amazon%20Personalize-Test%20Agent1.png)
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Amazon%20Personalize-Test%20Agent2.png)
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Amazon%20Personalize-Test%20Agent3.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Amazon%20Personalize-Test%20Agent1.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Amazon%20Personalize-Test%20Agent2.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Amazon%20Personalize-Test%20Agent3.png)
 
 - Now lets use another source of data in our Agent, in the next section we will use Amazon Bedrock Knowledge bases to suggest gift wrapping ideas
 
@@ -472,7 +472,7 @@ In this section, we’ll extend the agent with a new capability: generating gift
 
 (iv) Choose the 'GiftWrappingDataSource' to view its details and make sure the data source sync is complete from the Sync history section
 
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Knowledgebase1.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Knowledgebase1.png)
 
 ### 2. Edit the Agent
 
@@ -507,8 +507,8 @@ _This is a gift wrapping knowledge base for ideas on how to wrap gifts based on 
 
 ### Test the Agent.
 
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/KnowledgeBase-Test%20Agent1.png)
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/KnowledgeBase-Test%20Agent2.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/KnowledgeBase-Test%20Agent1.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/KnowledgeBase-Test%20Agent2.png)
 
 
 - Proceed to next section to learn how to create specialized agents and collaborate between them
@@ -543,7 +543,8 @@ And never tell the user about the API and its details._
 
 (viii) Choose "Create Alias" to create an Alias for the agent, name it get-product-alias
 
-   ![img]()
+   ![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/ProductAlias.png)
+   
    
 ### 2. Create the Cart Management agent
 (i) Create another Agent, name it cart-management-agent
@@ -601,7 +602,7 @@ _Invoke this agent when the user needs product recommendations or information ab
 
 (v) Enable Enable conversation history to allow the supervisor to share context from previous conversations. This helps maintain a coherent conversation flow when discussing products.
 
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Agent-Colloborater-2.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Agent-Colloborater-2.png)
 
 #### Add the Cart Management Collaborator
 (i) Click Add collaborator
@@ -620,13 +621,13 @@ _Invoke this agent when the user wants to add items to their cart or view cart c
 
 (vii) Then on the Agent builder page, Choose “Save” and then “Prepare” on the top of the page.
 
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Agent-Colloborater.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Agent-Colloborater.png)
 
 ### Test the Agent.
 
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Multi-AgentCollab-TestAgent1.png)
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Multi-AgentCollab-TestAgent2.png)
-![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/ef1e2afca5bd6f660a73a2b4f8f30423382416a0/Multi-AgentCollab-TestAgent3.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Multi-AgentCollab-TestAgent1.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Multi-AgentCollab-TestAgent2.png)
+![img](https://github.com/Awadheshks/Agentic-AI-Foundations-Project/blob/920ab26b5cd61756de2f888f7532984e1acfe726/assets/Multi-AgentCollab-TestAgent3.png)
 
 
 #### Cleanup:
